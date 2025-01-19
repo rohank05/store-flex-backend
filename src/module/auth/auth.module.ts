@@ -5,6 +5,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { SecurityUser } from "src/entities/security_user";
 import { JwtModule } from "@nestjs/jwt";
 import { ConfigModule } from "@nestjs/config";
+import { RoleGuard } from "./roles.guard";
 
 @Module({
 	imports: [

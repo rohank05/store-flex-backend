@@ -5,6 +5,7 @@ import { Repository } from "typeorm";
 import { LoginDTO, RegisterDTO } from "./dto/login.dto";
 import * as bcrypt from "bcrypt";
 import { JwtService } from "@nestjs/jwt";
+import { Request } from "express";
 
 @Injectable()
 export class AuthService {
@@ -39,6 +40,17 @@ export class AuthService {
 			role: user.role,
 			name: user.fullName,
 		};
-		return { accessToken: await this.jwtService.signAsync(payload) };
+		return {
+			accessToken: await this.jwtService.signAsync(payload),
+			...payload,
+		};
+	}
+
+	async getProfile(request: Request) {
+		const user = await this.securityUserRespository.findOne({
+			where: { email: request["user"].email },
+		});
+		delete user.password;
+		return user;
 	}
 }

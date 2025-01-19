@@ -6,7 +6,7 @@ import {
 	IsStrongPassword,
 } from "class-validator";
 
-enum UserRole {
+export enum UserRole {
 	ADMIN = "admin",
 	MANAGER = "manager",
 	CASHIER = "cashier",

@@ -4,6 +4,8 @@ import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AuthModule } from "./module/auth/auth.module";
 import { ConfigModule } from "@nestjs/config";
+import { InventoryModule } from './inventory/inventory.module';
+import { InventoryModule } from './inventory/inventory.module';
 
 const config = ConfigModule.forRoot({
 	envFilePath: ".env",
@@ -24,6 +26,7 @@ const config = ConfigModule.forRoot({
 			autoLoadEntities: true,
 		}),
 		AuthModule,
+		InventoryModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
